@@ -2,9 +2,6 @@
 base_dir=`pwd`;cd $base_dir
 source env.sh
 yum tar install bash-completion wget ipvsadm ipset sysstat conntrack libseccomp -y
-DEFAULT_INTERFACE=$(ip route show default | awk '/default/ {print $5}')
-IP_ADDRESS=$(ip addr show "$DEFAULT_INTERFACE" | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
-HOSTNAME="k8s-$(echo "$IP_ADDRESS" | tr '.' '-')"
 hostnamectl set-hostname "$HOSTNAME"
 wget -4 "https://private-box.oss-cn-hangzhou.aliyuncs.com/tool/kubernetes/kubernetes-v${k8s_version}-${ARCH}.tar.gz"
 

@@ -123,7 +123,6 @@ download_packages() {
         echo "$filename is existed"
       fi
     done
-	wget -4  kubernetes-v${k8s_version}-${ARCH}/ $kubernetes_server_url
   echo "Package downloads completed."
 }
 

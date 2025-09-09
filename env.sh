@@ -13,6 +13,7 @@ else
 fi
 
 
+
 #-----------变量配置--------------
 runtime="containerd"
 bin_dir=/usr/local/bin
@@ -42,3 +43,8 @@ skopeo_version=v1.18.0
 velero_version=v1.16.0
 
 base_url=https://ghfast.top
+
+
+DEFAULT_INTERFACE=$(ip route show default | awk '/default/ {print $5}')
+IP_ADDRESS=$(ip addr show "$DEFAULT_INTERFACE" | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
+HOSTNAME="k8s-$(echo "$IP_ADDRESS" | tr '.' '-')"
