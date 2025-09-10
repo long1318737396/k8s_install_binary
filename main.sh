@@ -6,7 +6,7 @@ echo "==================================start system init=======================
 
 bash system_init.sh
 echo "==================================end system init========================================="
-if [ $runtime == "containerd" ];then ]
+if [ $runtime == "containerd" ];then
   echo "==================================start install containerd=============================="
   bash install_containerd.sh
 elif [ $runtime == "docker" ];then

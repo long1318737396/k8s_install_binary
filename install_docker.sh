@@ -129,3 +129,5 @@ EOF
   
   echo "Docker installed."
 }
+
+install_docker

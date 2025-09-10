@@ -23,3 +23,5 @@ install_crio() {
   
   echo "CRI-O installed."
 }
+
+install_crio

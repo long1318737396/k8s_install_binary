@@ -4,7 +4,11 @@ cd $base_dir
 source env.sh
 yum  install tar bash-completion wget ipvsadm ipset sysstat conntrack libseccomp -y
 hostnamectl set-hostname "$HOSTNAME"
-wget -4 "https://private-box.oss-cn-hangzhou.aliyuncs.com/tool/kubernetes/kubernetes-v${k8s_version}-${ARCH}.tar.gz"
+if [ -f kubernetes-v${k8s_version}-${ARCH}.tar.gz ];then 
+  echo "kubernetes-v${k8s_version}-${ARCH}.tar.gz exist"
+else
+  wget -4 "https://private-box.oss-cn-hangzhou.aliyuncs.com/tool/kubernetes/kubernetes-v${k8s_version}-${ARCH}.tar.gz"
+fi
 
 tar -zxvf kubernetes-v${k8s_version}-${ARCH}.tar.gz
 

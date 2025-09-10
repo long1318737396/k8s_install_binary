@@ -58,3 +58,5 @@ EOF
   
   echo "Containerd components installed."
 }
+
+install_containerd

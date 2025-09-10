@@ -1,7 +1,7 @@
 #!/bin/bash
 base_dir=`pwd`;cd $base_dir
 source env.sh
-bash cfssl_install.sh
+bash install_cfssl.sh
 install_etcd() {
 	echo "Installing etcd..."
 	if [ ! -f "kubernetes-v${k8s_version}-${ARCH}/etcd-${etcd_version}-linux-${ARCH}.tar.gz" ]; then
@@ -165,3 +165,7 @@ EOF
   export ETCDCTL_API=3
   etcdctl --endpoints="${IP_ADDRESS}:2379" --cacert=/etc/kubernetes/pki/etcd/etcd-ca.pem --cert=/etc/kubernetes/pki/etcd/etcd.pem --key=/etc/kubernetes/pki/etcd/etcd-key.pem  endpoint status --write-out=table
 }	
+
+
+
+install_etcd
