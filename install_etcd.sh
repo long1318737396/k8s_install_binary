@@ -1,7 +1,7 @@
 #!/bin/bash
 base_dir=`pwd`;cd $base_dir
 source env.sh
-bash install_cfssl.sh
+
 install_etcd() {
 	echo "Installing etcd..."
 	if [ ! -f "kubernetes-v${k8s_version}-${ARCH}/etcd-${etcd_version}-linux-${ARCH}.tar.gz" ]; then
@@ -154,7 +154,7 @@ Alias=etcd3.service
 
 EOF
 
-  mkdir /etc/kubernetes/pki/etcd
+  mkdir -p /etc/kubernetes/pki/etcd
   ln -s /etc/etcd/ssl/* /etc/kubernetes/pki/etcd/
   systemctl daemon-reload
   systemctl enable --now etcd.service

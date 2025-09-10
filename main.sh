@@ -21,10 +21,9 @@ else
 fi
 
 echo "==================================start install etcd======================================"
+bash install_cfssl.sh
 bash install_etcd.sh
 
-echo "==================================start install nginx====================================="
-bash install_nginx.sh
 
 echo "==================================start install k8s======================================="
 bash install_k8s_apiserver.sh

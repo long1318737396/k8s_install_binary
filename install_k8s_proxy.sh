@@ -23,7 +23,7 @@ WantedBy=multi-user.target
 
 EOF
 
-
+mkdir -p /etc/kubernetes
 cat > /etc/kubernetes/kube-proxy.yaml << EOF
 apiVersion: kubeproxy.config.k8s.io/v1alpha1
 bindAddress: 0.0.0.0

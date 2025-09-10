@@ -14,3 +14,5 @@ install_cfssl() {
 		chmod +x $bin_dir/cfssl*
 	fi
 }
+
+install_cfssl

@@ -6,7 +6,6 @@ source env.sh
 yum install -y nginx
 
 cat > /etc/nginx/conf.d/kube-nginx.conf <<EOF
-worker_processes 1;
 events {
     worker_connections  1024;
 }

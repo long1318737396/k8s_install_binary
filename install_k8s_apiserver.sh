@@ -133,7 +133,7 @@ cfssl gencert \
 kubectl config set-cluster kubernetes \
      --certificate-authority=/etc/kubernetes/pki/ca.pem \
      --embed-certs=true \
-     --server=https://127.0.0.1:8443 \
+     --server=https://127.0.0.1:6443 \
      --kubeconfig=/etc/kubernetes/controller-manager.kubeconfig
 
 kubectl config set-context system:kube-controller-manager@kubernetes \
@@ -180,7 +180,7 @@ cfssl gencert \
 kubectl config set-cluster kubernetes \
      --certificate-authority=/etc/kubernetes/pki/ca.pem \
      --embed-certs=true \
-     --server=https://127.0.0.1:8443 \
+     --server=https://127.0.0.1:6443 \
      --kubeconfig=/etc/kubernetes/scheduler.kubeconfig
 
 kubectl config set-credentials system:kube-scheduler \
@@ -227,7 +227,7 @@ cfssl gencert \
 kubectl config set-cluster kubernetes     \
   --certificate-authority=/etc/kubernetes/pki/ca.pem     \
   --embed-certs=true     \
-  --server=https://127.0.0.1:8443     \
+  --server=https://127.0.0.1:6443     \
   --kubeconfig=/etc/kubernetes/admin.kubeconfig
 
 kubectl config set-credentials kubernetes-admin  \
@@ -272,7 +272,7 @@ cfssl gencert \
 kubectl config set-cluster kubernetes     \
   --certificate-authority=/etc/kubernetes/pki/ca.pem     \
   --embed-certs=true     \
-  --server=https://127.0.0.1:8443     \
+  --server=https://127.0.0.1:6443     \
   --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig
 
 kubectl config set-credentials kube-proxy  \
@@ -355,7 +355,7 @@ bash install_k8s_scheduler.sh
 
 kubectl config set-cluster kubernetes     \
 --certificate-authority=/etc/kubernetes/pki/ca.pem     \
---embed-certs=true     --server=https://127.0.0.1:8443     \
+--embed-certs=true     --server=https://127.0.0.1:6443     \
 --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
 
 echo "$(head -c 6 /dev/urandom | md5sum | head -c 6)"."$(head -c 16 /dev/urandom | md5sum | head -c 16)"
