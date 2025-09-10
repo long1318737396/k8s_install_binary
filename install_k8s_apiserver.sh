@@ -4,11 +4,11 @@ source env.sh
 
 cd $base_dir
 
-if [ -f "kubernetes-v${k8s_version}-${ARCH}/kubernetes-server-linux-amd64.tar.gz" ];then
-  tar -xf kubernetes-v${k8s_version}-${ARCH}/kubernetes-server-linux-amd64.tar.gz  --strip-components=3 -C /usr/local/bin kubernetes/server/bin/kube{let,ctl,-apiserver,-controller-manager,-scheduler,-proxy}
+if [ -f "kubernetes-v${k8s_version}-${ARCH}/kubernetes-server-linux-${ARCH}.tar.gz" ];then
+  tar -xf kubernetes-v${k8s_version}-${ARCH}/kubernetes-server-linux-${ARCH}.tar.gz  --strip-components=3 -C /usr/local/bin kubernetes/server/bin/kube{let,ctl,-apiserver,-controller-manager,-scheduler,-proxy}
   kubelet --version
 else
-  echo "kubernetes-server-linux-amd64.tar.gz not found"
+  echo "kubernetes-server-linux-${ARCH}.tar.gz not found"
   exit 1
 fi
 

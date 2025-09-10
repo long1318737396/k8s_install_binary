@@ -1,5 +1,5 @@
 #!/bin/bash
-
+base_dir=`pwd`
 # 全局变量定义
 arch=`arch`
 if [ "$arch" == "x86_64" ];then
