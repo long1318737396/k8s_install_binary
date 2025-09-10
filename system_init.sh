@@ -1,7 +1,8 @@
 #!/bin/bash
-base_dir=`pwd`;cd $base_dir
+base_dir=`pwd`
+cd $base_dir
 source env.sh
-yum tar install bash-completion wget ipvsadm ipset sysstat conntrack libseccomp -y
+yum  install tar bash-completion wget ipvsadm ipset sysstat conntrack libseccomp -y
 hostnamectl set-hostname "$HOSTNAME"
 wget -4 "https://private-box.oss-cn-hangzhou.aliyuncs.com/tool/kubernetes/kubernetes-v${k8s_version}-${ARCH}.tar.gz"
 

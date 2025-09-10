@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 # 全局变量定义
 arch=`arch`
@@ -36,7 +35,7 @@ etcd_version=v3.6.0
 gateway_api_version=v1.3.0
 helm_version=3.17.3
 hubble_version=v1.17.3
-k8s_version=v1.33.4
+k8s_version=1.33.4
 nerdctl_full_version=2.1.4
 ptcpdump_version=0.33.2
 skopeo_version=v1.18.0
