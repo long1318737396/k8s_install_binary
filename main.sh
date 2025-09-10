@@ -13,3 +13,17 @@ else
   exit 1
 fi
 
+bash inestall_etcd.sh
+
+bash install_nginx.sh
+
+bash install_k8s_apiserver.sh
+
+bash install_k8s_kcm.sh
+
+bash install_k8s_scheduler.sh
+
+bash install_k8s_proxy.sh
+
+bash install_k8s_cni.sh
+

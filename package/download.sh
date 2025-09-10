@@ -109,14 +109,15 @@ download_packages() {
     "$pcpdump_url"
 	"$skopeo_url"
 	"$velero_url"
+	"$kubernetes_server_url"
   )
 
     mkdir kubernetes-v${k8s_version}-${ARCH}
 
     for package_url in "${packages[@]}"; do
       filename=$(basename "$package_url")
-      if [ ! -f "$filename" ];then
-        echo "Downloading $filename..."
+      if [ ! -f kubernetes-v${k8s_version}-${ARCH}/"$filename" ];then
+        echo "Downloading kubernetes-v${k8s_version}-${ARCH}/$filename..."
         wget -4 -O kubernetes-v${k8s_version}-${ARCH}/"$filename" "$package_url"
         echo "Downloaded $filename"
       else
