@@ -30,6 +30,8 @@ bash install_k8s_apiserver.sh
 
 echo "==================================start install k8s kcm==================================="
 cd `pwd`
+pwd 
+ls
 bash install_k8s_kcm.sh
 
 echo "==================================start install k8s scheduler=============================="
