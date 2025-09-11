@@ -373,9 +373,6 @@ systemctl daemon-reload
 
 systemctl enable --now kube-apiserver.service
 
-bash install_k8s_kcm.sh
-bash install_k8s_scheduler.sh
-
 
 kubectl config set-cluster kubernetes     \
 --certificate-authority=/etc/kubernetes/pki/ca.pem     \
