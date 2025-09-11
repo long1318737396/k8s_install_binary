@@ -8,7 +8,7 @@ elif [ "$arch" == "aarch64" ];then
   ARCH=arm64
 else
   echo "this arch is not unsupport"
-  exit 1
+  #exit 1
 fi
 
 
@@ -16,8 +16,8 @@ fi
 #-----------变量配置--------------
 runtime="containerd"
 bin_dir=/usr/local/bin
-docker_data_root=/var/lib/docker
-pod_network_cidr=10.244.0.0/16
+export docker_data_root=/var/lib/docker
+export pod_network_cidr=10.244.0.0/16
 service_cidr=10.96.0.0/12
 
 calico_version=v3.30.0

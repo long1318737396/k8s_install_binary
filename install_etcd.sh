@@ -86,6 +86,8 @@ EOF
    -hostname=127.0.0.1,$IP_ADDRESS,localhost,$HOSTNAME \
    -profile=kubernetes \
    etcd-csr.json | cfssljson -bare /etc/kubernetes/pki/etcd/etcd
+
+  mkdir /etc/etcd
   
   cat > /etc/etcd/etcd.config.yml << EOF 
 name: "${HOSTNAME}"
