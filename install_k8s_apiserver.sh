@@ -24,6 +24,28 @@ mkdir -p /etc/kubernetes/pki
 
 cd /etc/kubernetes/pki
 
+
+cat > ca-config.json << EOF 
+{
+  "signing": {
+    "default": {
+      "expiry": "876000h"
+    },
+    "profiles": {
+      "kubernetes": {
+        "usages": [
+            "signing",
+            "key encipherment",
+            "server auth",
+            "client auth"
+        ],
+        "expiry": "876000h"
+      }
+    }
+  }
+}
+EOF
+
 cat > ca-csr.json   << EOF 
 {
   "CN": "kubernetes",
@@ -64,27 +86,6 @@ cat > apiserver-csr.json << EOF
       "OU": "Kubernetes-manual"
     }
   ]
-}
-EOF
-
-cat > ca-config.json << EOF 
-{
-  "signing": {
-    "default": {
-      "expiry": "876000h"
-    },
-    "profiles": {
-      "kubernetes": {
-        "usages": [
-            "signing",
-            "key encipherment",
-            "server auth",
-            "client auth"
-        ],
-        "expiry": "876000h"
-      }
-    }
-  }
 }
 EOF
 
