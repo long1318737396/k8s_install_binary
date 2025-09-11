@@ -40,3 +40,4 @@ EOF
 systemctl daemon-reload
 
 systemctl enable --now kube-controller-manager.service
+systemctl restart kube-controller-manager.service

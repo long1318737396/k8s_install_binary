@@ -26,4 +26,6 @@ WantedBy=multi-user.target
 
 EOF
 
+systemctl daemon-reload
 systemctl enable --now kube-scheduler.service
+systemctl restart kube-scheduler.service

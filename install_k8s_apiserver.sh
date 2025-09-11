@@ -373,6 +373,7 @@ EOF
 systemctl daemon-reload
 
 systemctl enable --now kube-apiserver.service
+systemctl restart kube-apiserver.service
 
 
 kubectl config set-cluster kubernetes     \
@@ -504,7 +505,7 @@ Wants=network-online.target
 Requires=containerd.service
 
 [Service]
-ExecStart=/usr/local/bin/kubelet \\
+ExecStart=${bin_dir}/kubelet \\
     --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig  \\
     --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \\
     --config=/etc/kubernetes/kubelet-conf.yml \\
@@ -591,3 +592,6 @@ EOF
 systemctl daemon-reload
 
 systemctl enable --now kubelet.service
+
+systemctl restart kubelet.service
+
