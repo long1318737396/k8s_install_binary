@@ -11,8 +11,10 @@ install_etcd() {
 		tar -zxvf "kubernetes-v${k8s_version}-${ARCH}/etcd-${etcd_version}-linux-${ARCH}.tar.gz" -C kubernetes-v${k8s_version}-${ARCH}/
 		/bin/cp kubernetes-v${k8s_version}-${ARCH}/etcd-${etcd_version}-linux-${ARCH}/etcd* $bin_dir/
 	fi
-	mkdir /etc/etcd/ssl -p
-	cd /etc/etcd/ssl
+	mkdir -p /etc/kubernetes/pki/etcd
+
+  cd /etc/kubernetes/pki/etcd
+
 	cat > ca-config.json << EOF 
 {
   "signing": {
@@ -56,7 +58,7 @@ EOF
 }
 EOF
 
-  cfssl gencert -initca etcd-ca-csr.json | cfssljson -bare /etc/etcd/ssl/etcd-ca
+  cfssl gencert -initca etcd-ca-csr.json | cfssljson -bare /etc/kubernetes/pki/etcd/etcd-ca
   
   cat > etcd-csr.json << EOF 
 {
@@ -78,12 +80,12 @@ EOF
 EOF
 
   cfssl gencert \
-   -ca=/etc/etcd/ssl/etcd-ca.pem \
-   -ca-key=/etc/etcd/ssl/etcd-ca-key.pem \
+   -ca=/etc/kubernetes/pki/etcd/etcd-ca.pem \
+   -ca-key=/etc/kubernetes/pki/etcd/etcd-ca-key.pem \
    -config=ca-config.json \
    -hostname=127.0.0.1,$IP_ADDRESS,localhost,$HOSTNAME \
    -profile=kubernetes \
-   etcd-csr.json | cfssljson -bare /etc/etcd/ssl/etcd
+   etcd-csr.json | cfssljson -bare /etc/kubernetes/pki/etcd/etcd
   
   cat > /etc/etcd/etcd.config.yml << EOF 
 name: "${HOSTNAME}"
@@ -154,8 +156,6 @@ Alias=etcd3.service
 
 EOF
 
-  mkdir -p /etc/kubernetes/pki/etcd
-  ln -s /etc/etcd/ssl/* /etc/kubernetes/pki/etcd/
   systemctl daemon-reload
   systemctl enable --now etcd.service
   if [ $? -ne 0 ];then
