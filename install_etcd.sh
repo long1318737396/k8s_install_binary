@@ -125,13 +125,13 @@ client-transport-security:
   key-file: '/etc/kubernetes/pki/etcd/etcd-key.pem'
   client-cert-auth: true
   trusted-ca-file: '/etc/kubernetes/pki/etcd/etcd-ca.pem'
-  auto-tls: true
+  auto-tls: false
 peer-transport-security:
   cert-file: '/etc/kubernetes/pki/etcd/etcd.pem'
   key-file: '/etc/kubernetes/pki/etcd/etcd-key.pem'
   peer-client-cert-auth: true
   trusted-ca-file: '/etc/kubernetes/pki/etcd/etcd-ca.pem'
-  auto-tls: true
+  auto-tls: false
 debug: false
 log-package-levels:
 log-outputs: [default]
@@ -167,7 +167,5 @@ EOF
   export ETCDCTL_API=3
   etcdctl --endpoints="${IP_ADDRESS}:2379" --cacert=/etc/kubernetes/pki/etcd/etcd-ca.pem --cert=/etc/kubernetes/pki/etcd/etcd.pem --key=/etc/kubernetes/pki/etcd/etcd-key.pem  endpoint status --write-out=table
 }	
-
-
 
 install_etcd

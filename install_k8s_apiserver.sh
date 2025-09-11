@@ -505,13 +505,14 @@ Wants=network-online.target
 Requires=containerd.service
 
 [Service]
-ExecStart=${bin_dir}/kubelet \\
+ExecStart=${bind_dir}/kubelet \\
     --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig  \\
     --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \\
     --config=/etc/kubernetes/kubelet-conf.yml \\
     --container-runtime-endpoint=unix:///run/containerd/containerd.sock  \\
-    --node-labels=node.kubernetes.io/node=
-
+    --node-labels=node.kubernetes.io/node= \\
+    --hostname-override=${HOSTNAME} \\
+    --node-ip=${IP_ADDRESS}
 [Install]
 WantedBy=multi-user.target
 EOF
