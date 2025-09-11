@@ -93,13 +93,13 @@ snapshot-count: 5000
 heartbeat-interval: 100
 election-timeout: 1000
 quota-backend-bytes: 0
-listen-peer-urls: https://${IP_ADDRESS}}:2380"
-listen-client-urls: "https://${IP_ADDRESS}:2379,http://127.0.0.1:2379"
+listen-peer-urls: https://${IP_ADDRESS}:2380
+listen-client-urls: "https://${IP_ADDRESS}:2379,https://127.0.0.1:2379"
 max-snapshots: 3
 max-wals: 5
 cors:
 initial-advertise-peer-urls: https://${IP_ADDRESS}:2380
-advertise-client-urls: https://${IP_ADDRESS}:2379
+advertise-client-urls: https://${IP_ADDRESS}:2379,https://127.0.0.1:2379
 discovery:
 discovery-fallback: 'proxy'
 discovery-proxy:

@@ -46,6 +46,8 @@ cat > ca-csr.json   << EOF
 }
 EOF
 
+cfssl gencert -initca ca-csr.json | cfssljson -bare /etc/kubernetes/pki/ca
+
 cat > apiserver-csr.json << EOF 
 {
   "CN": "kube-apiserver",
@@ -64,6 +66,28 @@ cat > apiserver-csr.json << EOF
   ]
 }
 EOF
+
+cat > ca-config.json << EOF 
+{
+  "signing": {
+    "default": {
+      "expiry": "876000h"
+    },
+    "profiles": {
+      "kubernetes": {
+        "usages": [
+            "signing",
+            "key encipherment",
+            "server auth",
+            "client auth"
+        ],
+        "expiry": "876000h"
+      }
+    }
+  }
+}
+EOF
+
 
 cfssl gencert   \
 -ca=/etc/kubernetes/pki/ca.pem   \
