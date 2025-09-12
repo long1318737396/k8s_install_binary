@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source env.sh
+cd $base_dir
+
 #--------安装nfs相关组件----------
 setup_nfs() {
   echo "Setting up NFS..."
@@ -23,9 +26,10 @@ setup_nfs() {
   echo "NFS setup completed."
 }
 
+setup_nfs
 
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 helm install -n kube-system nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
     --set storageClass.defaultClass=true \
     --set nfs.server=${IP_ADDRESS} \
-    --set nfs.path=/nfs 
+    --set nfs.path=${nfs_path}

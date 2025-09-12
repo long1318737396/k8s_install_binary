@@ -8,6 +8,8 @@ tar -zxvf "kubernetes-v${k8s_version}-${ARCH}/helm-v${helm_version}-linux-${ARCH
 /bin/cp kubernetes-v${k8s_version}-${ARCH}/linux-${ARCH}/helm ${bin_dir}/helm
 chmod +x ${bin_dir}/helm
 
+echo "source <(helm completion bash) > /etc/profile.d/helm"
+
 cat ./yaml/kube-flannel.yaml |envsubst | tee /tmp/kube-flannel.yaml
 
 kubectl apply -f /tmp/kube-flannel.yaml
