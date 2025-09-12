@@ -26,7 +26,7 @@ cilium_cli_version=v0.18.3
 cilium_version=v1.17.4
 cri_docker_version=0.3.20
 crio_version=1.33.4
-crictl_version=v1.33.0
+crictl_version=1.33.0
 docker_buildx_version="v0.23.0"
 docker_compose_version=v2.36.0
 docker_version=28.4.0
@@ -42,7 +42,7 @@ skopeo_version=v1.18.0
 velero_version=v1.16.0
 
 base_url=https://ghfast.top
-
+nfs_path=/data/nfs
 
 DEFAULT_INTERFACE=$(ip route show default | awk '/default/ {print $5}')
 IP_ADDRESS=$(ip addr show "$DEFAULT_INTERFACE" | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)

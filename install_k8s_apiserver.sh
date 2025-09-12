@@ -396,6 +396,7 @@ kubectl config use-context tls-bootstrap-token-user@kubernetes     \
   --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
 
 mkdir -p /root/.kube ; cp /etc/kubernetes/admin.kubeconfig /root/.kube/config
+echo "source <(kubectl completion bash)" > /etc/profile.d/kubectl.sh
 
 kubectl get cs
 

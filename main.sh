@@ -40,3 +40,11 @@ bash install_k8s_proxy.sh
 echo "==================================start install k8s cni===================================="
 bash install_k8s_cni.sh
 
+echo "==================================start install coredns ==================================="
+bash install_coredns.sh
+
+echo "==================================start install other======================================="
+bash install_other.sh
+
+echo "==================================start install nfs========================================="
+bash install_nfs.sh

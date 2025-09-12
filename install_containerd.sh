@@ -55,7 +55,8 @@ EOF
     echo "containerd service restart failed"
     exit 1
   fi
-  
+  tar -zxvf "kubernetes-v${k8s_version}-${ARCH}/crictl-v${crictl_version}-linux-${ARCH}.tar.gz" -C ${bin_dir}
+  chmod +x ${bin_dir}/crictl
   echo "Containerd components installed."
 }
 
